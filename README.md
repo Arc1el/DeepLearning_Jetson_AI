@@ -1,5 +1,5 @@
 # DeepLearning_Jetson_AI
-deeplearning for jetson ai specialist
+deeplearning for jetson ai specialist.
 
 
 # Road following DEMO video
