@@ -31,6 +31,9 @@ gif로 움짤 올리기
 ## 설치 방법
 
 JetBot CSI camera setting:
+CSI camera test
+nvgstcapture-1.0 --automate --capture-auto
+cd /dev/video0
 
 ```sh
 npm install my-crazy-module --save
