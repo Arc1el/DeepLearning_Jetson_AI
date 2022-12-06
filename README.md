@@ -12,8 +12,8 @@
 유튜브 링크
 
 ## How to Install
-1. Install jetpack e from Nvidia JetPack SDK (We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46)
-2. Create Boot image from Jetpack
+1. Download jetpack from Nvidia JetPack SDK (We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46)
+2. Create Boot image from Jetpack (We used Balena Etcher)
 3. JetBot CSI camera setting:
 CSI camera test
 ```sh
