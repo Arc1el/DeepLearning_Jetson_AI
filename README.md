@@ -14,7 +14,7 @@
 ## How to Install
 1. Download jetpack from Nvidia JetPack SDK (We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46)
 2. Create Boot image from Jetpack (We used Balena Etcher)
-3. Install Pytorch and Torchvision (We used pre-build wheel / https://github.com/Qengineering/PyTorch-Jetson-Nano)
+3. Install Pytorch and Torchvision (https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
 4. JetBot CSI camera setting:
 CSI camera test
 ```sh
