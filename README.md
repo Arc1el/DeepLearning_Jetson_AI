@@ -15,6 +15,14 @@
 1. Download jetpack from Nvidia JetPack SDK (We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46)
 2. Create Boot image from Jetpack (We used Balena Etcher)
 3. Install Pytorch and Torchvision (https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048. if error with PIL deprecated, install Pillow < v7)
+https://github.com/Melvinsajith/How-to-Install-Mediapipe-in-Jetson-Nano
+https://github.com/AastaNV/JEP/import cv2
+print(cv2.getBuildInformation())
+and check for GSTREAMER support in Video I/O section:
+
+GStreamer:                   YES (1.14.5)tree/master/script
+
+
 5. JetBot CSI camera setting:
 CSI camera test
 ```sh
