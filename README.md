@@ -1,36 +1,20 @@
-# Desktop controllers using gestures
+# DeepLearning jetson AI project
+  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"><img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
+  
+  ## Desktop controllers using gestures
+  - Jetson Nano, Python을 활용하여 카메라를 통해 유저의 손을 인식하고, 제스쳐를 통해 os를 조작합니다.
+  - Using Jetson Nano and Python, the camera recognizes the user's hand and manipulates the os through gestures.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+# Outcomes
+결과물 gif
 
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
+# Youtube URL
+유튜브 링크
 
-```[![이미지 텍스트](스크린샷 이미지)](유투브링크)```
-
-
-gif로 움짤 올리기
-
-```[![이미지 텍스트](gif 이미지)]```
-<img src="[https://user-images.githubusercontent.com/51365114/119627750-716f3100-be47-11eb-8e83-686b23c2c161.png](https://user-images.githubusercontent.com/4470398/204947699-4feb33cd-ab75-41f6-bedd-10b22eb2e961.gif)  width="600" height="400"/>
-![demo4](https://user-images.githubusercontent.com/4470398/204947699-4feb33cd-ab75-41f6-bedd-10b22eb2e961.gif)
-
-
-
-깃헙의 LFS를 설명해 놓은 동영상을 링크 
-
-``` [![Video Label](http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg)](https://youtu.be/uLR1RNqJ1Mw?t=0s) ```
-[![Video Label](http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg)](https://youtu.be/uLR1RNqJ1Mw?t=0s) 
-
-
-
-
-
-![](../header.png)
-
-## 설치 방법
-
-JetBot CSI camera setting:
+## How to Install
+1. Install jetpack e from Nvidia JetPack SDK (We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46)
+2. Create Boot image from Jetpack
+3. JetBot CSI camera setting:
 CSI camera test
 ```sh
 nvgstcapture-1.0 --automate --capture-auto
@@ -47,13 +31,11 @@ npm install my-crazy-module --save
 edit autoexec.bat
 ```
 
-## 사용 예제
+## Examples
 
 스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
 
-_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
-
-## 개발 환경 설정
+## Devel
 
 모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
 
