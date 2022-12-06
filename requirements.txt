@@ -1,0 +1,2 @@
+https://developer.nvidia.com/embedded/jetpack
+-> JETSON XAVIER NX DEVELOPER KIT -> download sd card image -> balena Etcher
