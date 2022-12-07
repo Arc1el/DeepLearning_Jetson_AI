@@ -79,6 +79,11 @@
   ```sh
   GStreamer:                   YES (1.14.5)tree/master/script
   ```
+## Algorithms used in Projects
+
+* The K-Nearest Neighbor (K-NN) algorithm is the simplest machine learning algorithm, classification algorithm. Data with similar characteristics are used under the assumption that they tend to fall into similar categories.
+
+<img src="https://user-images.githubusercontent.com/65393001/206213536-d27ebc5b-1793-47ec-bcf3-77628bacdedb.png" width="600" height="380"/>
 
 ## Code Block Description
 
@@ -206,4 +211,7 @@ while True:
 
 ## README 
 
-1. 
+1. https://github.com/ntu-rris/google-mediapipe
+
+a quote
+> a quote 1: https://www.kaggle.com/getting-started/160448
