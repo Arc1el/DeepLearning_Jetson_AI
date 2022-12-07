@@ -1,5 +1,5 @@
 # DeepLearning jetson AI project
-  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"><img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
+  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/Google Mediapipe-4285F4?style=for-the-badge&logo=google&logoColor=white"><img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
   
   ## Desktop controllers using gestures
   - Jetson Nano, Python을 활용하여 카메라를 통해 유저의 손을 인식하고, 제스쳐를 통해 os를 조작합니다.
@@ -12,9 +12,28 @@
 유튜브 링크
 
 ## How to Install
-1. Download jetpack from Nvidia JetPack SDK (We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46)
+1. Download jetpack from Nvidia JetPack SDK
+  * We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46
 2. Create Boot image from Jetpack (We used Balena Etcher)
-3. Install Pytorch and Torchvision (https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048. if error with PIL deprecated, install Pillow < v7)
+3. Install Pytorch and Torchvision(https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
+  * **<h4>DO NOT INSTALL PYTORCH AND TORCHVISON VIA ANY PACKAGE MANAGER</h4>**
+  * We used PyTorch v1.10.0 and torchvision v0.10.0
+  * if error with PIL deprecated, install Pillow < v7
+  * Pytorch Install
+  ```sh
+  sudo apt-get install python3-pip libopenblas-base libopenmpi-dev libomp-dev
+  pip3 install Cython
+  pip3 install numpy torch-1.11.0-cp36-cp36m-linux_aarch64.whl
+  ```
+  * Torchvision Install
+  ```sh
+  sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+  git clone --branch v0.11.0 https://github.com/pytorch/vision torchvision
+  cd torchvision
+  export BUILD_VERSION=0.11.0 
+  python3 setup.py install --user
+  pip3 install 'pillow<7'
+  ```
 https://github.com/Melvinsajith/How-to-Install-Mediapipe-in-Jetson-Nano
 https://github.com/AastaNV/JEP/import cv2
 print(cv2.getBuildInformation())
