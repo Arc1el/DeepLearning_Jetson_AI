@@ -22,7 +22,7 @@
   * We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46
 2. Create Boot image from Jetpack (We used Balena Etcher)
 3. Install Pytorch and Torchvision(https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
-  * **<h4>DO NOT INSTALL PYTORCH AND TORCHVISON VIA ANY PACKAGE MANAGER</h4>**
+  **<h4>⚠️ DO NOT INSTALL PYTORCH AND TORCHVISON VIA ANY PACKAGE MANAGER ⚠️</h4>**
   * We used PyTorch v1.10.0 and torchvision v0.10.0
   * if error with PIL deprecated, install Pillow < v7
   * Pytorch Install
@@ -41,7 +41,7 @@
   pip3 install 'pillow<7'
   ```
 4. Install Mediapipe
-  * **<h4>DO NOT INSTALL MEDIAPIPE VIA PIP</h4>**
+  **<h4>⚠️ DO NOT INSTALL MEDIAPIPE VIA PIP ⚠️</h4>**
   * Reference : https://github.com/Melvinsajith/How-to-Install-Mediapipe-in-Jetson-Nano
   ```sh
   sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev \
@@ -62,46 +62,26 @@
   ```sh
   sudo apt-get install python3-opencv
   ```
-6. (Optional) If you wanna input CSI cam video source
-
-
-
-https://github.com/AastaNV/JEP/import cv2
-print(cv2.getBuildInformation())
-and check for GSTREAMER support in Video I/O section:
-
-GStreamer:                   YES (1.14.5)tree/master/script
-
-
-5. JetBot CSI camera setting:
-CSI camera test
-```sh
-nvgstcapture-1.0 --automate --capture-auto
-cd /dev/video0
-```
-
-```sh
-npm install my-crazy-module --save
-```
-
-윈도우:
-
-```sh
-edit autoexec.bat
-```
+6. (Optional) If you wanna input CSI Camera video source, install OpenCV using this method
+  **<h4>⚠️ WARNING. This task lasts at least 4 hours ⚠️</h4>**
+  * Reference : https://github.com/AastaNV/JEP/
+  ```sh
+  wget https://raw.githubusercontent.com/AastaNV/JEP/master/script/install_opencv4.5.0_Jetson.sh
+  ./install_opencv4.5.0_Jetson.sh
+  ```
+  * test
+  ```python
+  import cv2
+  print(cv2.getBuildInformation())
+  ```
+  * Check for GSTREAMER support in VIDEO I/O section
+  ```sh
+  GStreamer:                   YES (1.14.5)tree/master/script
+  ```
 
 ## Examples
 
 스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
-
-## Devel
-
-모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
-
-```sh
-make install
-npm test
-```
 
 ## 코드블럭 설명
 
@@ -165,11 +145,3 @@ _기울임 꼴_
 **굵은 글씨**
 
 __굵은 글씨__
-
-<!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
