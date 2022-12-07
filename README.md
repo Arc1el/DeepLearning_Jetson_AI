@@ -6,7 +6,7 @@
   - Using Jetson Nano, Python and Mediapipe, the camera recognizes the user's hand and manipulates the os through gestures.
 
 # Outcomes
-결과물 gif
+<img src="./demo.gif" width="400" height="280"/>
 
 # Youtube URL
 [![Video Label](https://user-images.githubusercontent.com/65393001/206189750-c33c1160-b96c-4b07-a5ab-8be678ae29f2.PNG)](https://youtu.be/XbvgqPYqAnI)
@@ -80,69 +80,130 @@
   GStreamer:                   YES (1.14.5)tree/master/script
   ```
 
-## Examples
+## Code Block Description
 
-스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
+# Client.py
+* Code for socket communication with server
+```python
+//```
+clientSock = socket(AF_INET, SOCK_STREAM)
+clientSock.connect(('172.20.10.3', 7777))
+rps_gesture = {0:'mute', 5:'unmute', 9:'capture', 10:'fix'}
+```
+* Code for Live Video Capture
+```python
+//```
+cap = cv2.VideoCapture('nvarguscamerasrc ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=(fraction)20/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink', cv2.CAP_GSTREAMER)
+```
+* Run while live capture continues
+```python
+//```while live capture
+while cap.isOpened():
+        success, image = cap.read()
+        
+        if not success:
+            print("can't open video")
+            continue
+```
+* ompute angles between joints, Get angle using arcos of dot product, then Translate certain numeric codes to the server in utf-8 and send them to Socat communication
+```python
+//```Code for socket communication with server
+ if results.multi_hand_landmarks is not None:
+            for res in results.multi_hand_landmarks:
+                joint = np.zeros((21, 3))
+                for j, lm in enumerate(res.landmark):
+                    joint[j] = [lm.x, lm.y, lm.z]
 
-## 코드블럭 설명
+                # Compute angles between joints
+                v1 = joint[[0,1,2,3,0,5,6,7,0,9,10,11,0,13,14,15,0,17,18,19],:] # Parent joint
+                v2 = joint[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],:] # Child joint
+                v = v2 - v1 # [20,3]
+                # Normalize v
+                v = v / np.linalg.norm(v, axis=1)[:, np.newaxis]
 
-```c
-//```뒤에 자신이 원하는 언어 (생략 가능)
-#include <stdio.h>
-int main(void) {
-  printf("Hello World!");
-}
+                # Get angle using arcos of dot product
+                angle = np.arccos(np.einsum('nt,nt->n',
+                    v[[0,1,2,4,5,6,8,9,10,12,13,14,16,17,18],:], 
+                    v[[1,2,3,5,6,7,9,10,11,13,14,15,17,18,19],:])) # [15,]
+
+                angle = np.degrees(angle) # Convert radian to degree
+
+                # Inference gesture
+                data = np.array([angle], dtype=np.float32)
+                ret, result, neighbours, dist = knn.findNearest(data, 3)
+                idx = int(result[0][0])
+
+                # Draw gesture result
+                if idx in rps_gesture.keys():
+                    
+                    print("idx : ", idx)
+                    if idx == 0:
+                        print("mute")
+                        clientSock.send(str(1111).encode('utf-8')) //Translate certain numeric codes to the server in utf-8 and send them to Socat communication
+                        
+                    elif idx == 5:
+                        print("unmute")
+                        clientSock.send(str(2222).encode('utf-8'))
+                        
+                    elif idx == 9 :
+                        print("capture")
+                        clientSock.send(str(3333).encode('utf-8'))
+
+                    elif idx == 10 :
+                        print("fix")
+                        clientSock.send(str(4444).encode('utf-8'))
+
+                    cv2.putText(image, text=rps_gesture[idx].upper(), org=(int(res.landmark[0].x * image.shape[1]), int(res.landmark[0].y * image.shape[0] + 20)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
+
+                # Other gestures
+                # cv2.putText(img, text=gesture[idx].upper(), org=(int(res.landmark[0].x * img.shape[1]), int(res.landmark[0].y * img.shape[0] + 20)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
+
+                mp_drawing.draw_landmarks(image, res, mp_hands.HAND_CONNECTIONS)
 ```
 
-
-## 업데이트 내역
-
-* 0.2.1
-    * 수정: 문서 업데이트 (모듈 코드 동일)
-* 0.2.0
-    * 수정: `setDefaultXYZ()` 메서드 제거
-    * 추가: `init()` 메서드 추가
-* 0.1.1
-    * 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
-* 0.1.0
-    * 첫 출시
-    * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
-* 0.0.1
-    * 작업 진행 중
-
-## 정보
-
-이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
-
-XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할 수 있습니다.
-
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+# Server.py
+* Code for socket communication with client
+```python
+//```
+def recieve_data(val):
+    serverSock = socket(AF_INET, SOCK_STREAM)
+    serverSock.bind(('', 7777))
+    serverSock.listen(1)
+    connectionSock, addr = serverSock.accept()
+    print("Client address : ", str(addr))
+```
+* Decode specific numeric codes passed from the client to perform corresponding actions
+```python
+//```
+while True:
+        print("val : ", val.value)
+        try : 
+            vol = int(connectionSock.recv(4).decode('utf-8'))
+            if vol == 1111:
+                print("mute")
+                osascript.osascript('set volume output muted TRUE')
+                val.value = 0
+                while True:
+                    vol = int(connectionSock.recv(4).decode('utf-8'))
+                    if vol == 2222:
+                        osascript.osascript('set volume output muted FALSE')
+                        break
+                    
+            if vol == 3333:
+                print("screenshot")
+                os.system("screencapture screen.png")
+                vol = 0
+                
+            if vol == 4444:
+                print("fix volume")
+                osascript.osascript('tell app "System Events" to shut down')
+                time.sleep(5)
+            if vol < 300:
+                val.value = vol
+        except:
+            pass
+```
 
 ## README 
 
-1. https://github.com/kyechan99/capsule-render
-2. https://yermi.tistory.com/entry/%EA%BF%80%ED%8C%81-Github-Readme-%EC%98%88%EC%81%98%EA%B2%8C-%EA%BE%B8%EB%AF%B8%EA%B8%B0-Readme-Header-Badge-Widget-%EB%93%B1
-
-
-## 그외의 팁
-
-취소선
-~~취소선~~
-
-
-인용글
-> 인용글 1
-> > 인용글 2
-> > > 인용글 3
-
-기울임
-*기울임 꼴*
-
-_기울임 꼴_
-
-
-굵은글씨
-
-**굵은 글씨**
-
-__굵은 글씨__
+1. 
