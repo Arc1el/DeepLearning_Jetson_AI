@@ -34,8 +34,6 @@
   * Torchvision Install
   ```sh
   sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
-  
-  
   git clone --branch v0.11.0 https://github.com/pytorch/vision torchvision
   cd torchvision
   export BUILD_VERSION=0.11.0 
@@ -61,6 +59,10 @@
   sudo env H5PY_SETUP_REQUIRES=0 pip3 install -U h5py==3.1.0
   ```
 5. Install OpenCV
+  ```sh
+  sudo apt-get install python3-opencv
+  ```
+6. (Optional) If you wanna input CSI cam video source
 
 
 
