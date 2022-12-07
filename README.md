@@ -137,7 +137,7 @@ while cap.isOpened():
 
                 # Inference gesture
                 data = np.array([angle], dtype=np.float32)
-                ret, result, neighbours, dist = knn.findNearest(data, 3)
+                ret, result, neighbours, dist = knn.findNearest(data, 4)
                 idx = int(result[0][0])
 
                 # Draw gesture result
@@ -157,7 +157,7 @@ while cap.isOpened():
                         clientSock.send(str(3333).encode('utf-8'))
 
                     elif idx == 10 :
-                        print("fix")
+                        print("shutdown")
                         clientSock.send(str(4444).encode('utf-8'))
 
                     cv2.putText(image, text=rps_gesture[idx].upper(), org=(int(res.landmark[0].x * image.shape[1]), int(res.landmark[0].y * image.shape[0] + 20)), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(255, 255, 255), thickness=2)
