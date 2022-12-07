@@ -12,6 +12,12 @@
 유튜브 링크
 
 ## How to Install
+0. Update and Upgrade the APT and PIP
+  ```sh
+  sudo apt-get update
+  sudo apt-get upgrade
+  pip3 install --upgrade pip
+  ```
 1. Download jetpack from Nvidia JetPack SDK
   * We used version 4.6 / https://developer.nvidia.com/embedded/jetpack-sdk-46
 2. Create Boot image from Jetpack (We used Balena Etcher)
@@ -28,13 +34,36 @@
   * Torchvision Install
   ```sh
   sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+  
+  
   git clone --branch v0.11.0 https://github.com/pytorch/vision torchvision
   cd torchvision
   export BUILD_VERSION=0.11.0 
   python3 setup.py install --user
   pip3 install 'pillow<7'
   ```
-https://github.com/Melvinsajith/How-to-Install-Mediapipe-in-Jetson-Nano
+4. Install Mediapipe
+  * **<h4>DO NOT INSTALL MEDIAPIPE VIA PIP</h4>**
+  * Reference : https://github.com/Melvinsajith/How-to-Install-Mediapipe-in-Jetson-Nano
+  ```sh
+  sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev \
+  zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+  ```
+  ```sh
+  sudo pip3 install -U pip testresources setuptools==49.6.0
+  ```
+  ```sh
+  sudo pip3 install -U --no-deps numpy==1.19.4 future==0.18.2 mock==3.0.5 \
+  keras_preprocessing==1.1.2 keras_applications==1.0.8 gast==0.4.0 \
+  protobuf pybind11 cython pkgconfig
+  ```
+  ```sh
+  sudo env H5PY_SETUP_REQUIRES=0 pip3 install -U h5py==3.1.0
+  ```
+5. Install OpenCV
+
+
+
 https://github.com/AastaNV/JEP/import cv2
 print(cv2.getBuildInformation())
 and check for GSTREAMER support in Video I/O section:
