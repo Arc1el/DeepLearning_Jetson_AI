@@ -85,6 +85,8 @@
 
 <img src="https://user-images.githubusercontent.com/65393001/206213536-d27ebc5b-1793-47ec-bcf3-77628bacdedb.png" width="600" height="380"/>
 
+https://google.github.io/mediapipe/solutions/hands
+
 ## Code Block Description
 
 # Client.py
