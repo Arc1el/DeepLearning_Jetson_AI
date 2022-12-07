@@ -2,8 +2,8 @@
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/Google Mediapipe-4285F4?style=for-the-badge&logo=google&logoColor=white"><img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
   
   ## Desktop controllers using gestures
-  - Jetson Nano, Python을 활용하여 카메라를 통해 유저의 손을 인식하고, 제스쳐를 통해 os를 조작합니다.
-  - Using Jetson Nano and Python, the camera recognizes the user's hand and manipulates the os through gestures.
+  - Jetson Nano, Python, Mediapipe를 활용하여 카메라를 통해 유저의 손을 인식하고, 제스쳐를 통해 os를 조작합니다.
+  - Using Jetson Nano, Python and Mediapipe, the camera recognizes the user's hand and manipulates the os through gestures.
 
 # Outcomes
 결과물 gif
@@ -69,7 +69,7 @@
   wget https://raw.githubusercontent.com/AastaNV/JEP/master/script/install_opencv4.5.0_Jetson.sh
   ./install_opencv4.5.0_Jetson.sh
   ```
-  * test
+  * Test the OpenCV
   ```python
   import cv2
   print(cv2.getBuildInformation())
