@@ -9,7 +9,8 @@
 결과물 gif
 
 # Youtube URL
-[![Video Label]([http://img.youtube.com/vi/E2rpPNNWpo4/0.jpg](https://user-images.githubusercontent.com/65393001/206188445-a82cfd4a-43dc-41ae-a423-308d46b0df3a.PNG))](https://youtu.be/XbvgqPYqAnI)
+[![Video Label](https://user-images.githubusercontent.com/65393001/206189750-c33c1160-b96c-4b07-a5ab-8be678ae29f2.PNG)](https://youtu.be/XbvgqPYqAnI)
+
 
 ## How to Install
 0. Update and Upgrade the APT and PIP
