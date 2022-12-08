@@ -85,7 +85,7 @@
 
 <img src="https://user-images.githubusercontent.com/65393001/206213536-d27ebc5b-1793-47ec-bcf3-77628bacdedb.png" width="600" height="380"/>
 
-https://google.github.io/mediapipe/solutions/hands
+
 
 ## Code Block Description
 
@@ -214,6 +214,7 @@ while True:
 ## README 
 
 1. https://github.com/ntu-rris/google-mediapipe
-
-a quote
-> a quote 1: https://www.kaggle.com/getting-started/160448
+2. https://google.github.io/mediapipe/solutions/hands
+3. https://developer.nvidia.com/embedded/jetpack-sdk-46
+4. https://github.com/Melvinsajith/How-to-Install-Mediapipe-in-Jetson-Nano
+5. https://github.com/AastaNV/JEP/
