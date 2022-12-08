@@ -113,19 +113,17 @@
 # Client.py
 * Code for socket communication with server
 ```python
-//```
 clientSock = socket(AF_INET, SOCK_STREAM)
 clientSock.connect(('172.20.10.3', 7777))
 rps_gesture = {0:'mute', 5:'unmute', 9:'capture', 10:'fix'}
 ```
 * Code for Live Video Capture
 ```python
-//```
 cap = cv2.VideoCapture('nvarguscamerasrc ! video/x-raw(memory:NVMM), width=1280, height=720, format=(string)NV12, framerate=(fraction)20/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink', cv2.CAP_GSTREAMER)
 ```
 * Run while live capture continues
 ```python
-//```while live capture
+while live capture
 while cap.isOpened():
         success, image = cap.read()
         
@@ -135,7 +133,7 @@ while cap.isOpened():
 ```
 * Compute angles between joints, Get angle using arcos of dot product, then Translate certain numeric codes to the server in utf-8 and send them to Socat communication
 ```python
-//```Code for socket communication with server
+Code for socket communication with server
  if results.multi_hand_landmarks is not None:
             for res in results.multi_hand_landmarks:
                 joint = np.zeros((21, 3))
@@ -192,7 +190,6 @@ while cap.isOpened():
 # Server.py
 * Code for socket communication with client
 ```python
-//```
 def recieve_data(val):
     serverSock = socket(AF_INET, SOCK_STREAM)
     serverSock.bind(('', 7777))
@@ -202,7 +199,6 @@ def recieve_data(val):
 ```
 * Decode specific numeric codes passed from the client to perform corresponding actions
 ```python
-//```
 while True:
         print("val : ", val.value)
         try : 
