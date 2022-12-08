@@ -6,7 +6,7 @@
   - Using Jetson Nano, Python and Mediapipe, the camera recognizes the user's hand and manipulates the os through gestures.
 
 # Outcomes
-<img src="./demo.gif" width="400" height="280"/>
+<img src="./demo_2.gif" width="400" height="280"/>
 
 # Youtube URL
 [![Video Label](https://user-images.githubusercontent.com/65393001/206189750-c33c1160-b96c-4b07-a5ab-8be678ae29f2.PNG)](https://youtu.be/XbvgqPYqAnI)
