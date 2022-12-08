@@ -1,12 +1,13 @@
 # DeepLearning jetson AI project
-  This project is an artificial intelligence project that uses Jetson nano to recognize user gestures and assist user input in real life.<br><br>
-  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/Google Mediapipe-4285F4?style=for-the-badge&logo=google&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
-  ## The camera recognizes the user's hand and manipulates the os through gestures.
+  This project aims to build an AI machine that recognizes user gestures to control users' home appliances (e.g., laptop, TV, Audio) in real-life scenarios.
+Based on this code, Jetson Nano can recognize the user's hand and manipulates the operating system through gestures. The function of gestures are as follows:
   - Volume Control
   - Mute
   - Unmute
   - Capture
-  - Shutdown
+  - Shutdown<br><br>
+  <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/Google Mediapipe-4285F4?style=for-the-badge&logo=google&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
+ 
 # Outcomes
 <img src="./demo_2.gif" width="400" height="280"/>
 
