@@ -1,10 +1,12 @@
 # DeepLearning jetson AI project
   This project is an artificial intelligence project that uses Jetson nano to recognize user gestures and assist user input in real life, and is implemented using mediapipe, pytorch, and KNN machine learning algorithms.<br><br>
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"><img src="https://img.shields.io/badge/Google Mediapipe-4285F4?style=for-the-badge&logo=google&logoColor=white"><img src="https://img.shields.io/badge/Jetson Nano-76B900?style=for-the-badge&logo=nvidia&logoColor=white">
-  ## Desktop controllers using gestures
-  - Jetson Nano, Python, Mediapipe를 활용하여 카메라를 통해 유저의 손을 인식하고, 제스쳐를 통해 os를 조작합니다.
-  - Using Jetson Nano, Python and Mediapipe, the camera recognizes the user's hand and manipulates the os through gestures.
-
+  ## Using Jetson Nano, Python and Mediapipe, the camera recognizes the user's hand and manipulates the os through gestures.
+  - Volume Control
+  - Mute
+  - Unmute
+  - Capture
+  - Shutdown
 # Outcomes
 <img src="./demo_2.gif" width="400" height="280"/>
 
