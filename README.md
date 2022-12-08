@@ -59,33 +59,54 @@
   ```sh
   sudo env H5PY_SETUP_REQUIRES=0 pip3 install -U h5py==3.1.0
   ```
-5. Install OpenCV
+  Install OpenCV
   ```sh
   sudo apt-get install python3-opencv
   ```
-6. (Optional) If you wanna input CSI Camera video source, install OpenCV using this method
+  Test the OpenCV
+  ```python
+  import cv2
+  print(cv2.getBuildInformation())
+  ```
+  Check for GSTREAMER support in VIDEO I/O section
+  ```sh
+  GStreamer:                   YES (1.14.5)tree/master/script
+  ```
+  Increase swap for more swap ram
+  ```sh
+  git clone https://github.com/JetsonHacksNano/installSwapfile.git  
+  cd installSwapfile
+  ./installSwapfile.sh
+  ```
+  Install Mediapipe
+  ```sh
+  sudo apt-get install -y libopencv-core-dev  libopencv-highgui-dev libopencv-calib3d-dev libopencv-features2d-dev libopencv-imgproc-dev libopencv-video-dev
+  sudo chmod 744 setup_opencv.sh
+  ./setup_opencv.sh
+  sudo pip3 install opencv_contrib_python
+  ```
+  Download Files
+  https://drive.google.com/file/d/1lHr9Krznst1ugLF_ElWGCNi_Y4AmEexx/view?usp=sharing
+  ```sh
+  unzip mediapipe-bin.zip
+  cd mediapipe-bin
+  sudo pip3 install numpy-1.19.4-cp36-none-manylinux2014_aarch64.whl mediapipe-0.8.5_cuda102-cp36-none-linux_aarch64.whl
+  pip3 install dataclasses
+  ```
+  5-1. (Optional) If you wanna input CSI Camera video source, install OpenCV using this method
   **<h4>⚠️ WARNING. This task lasts at least 4 hours ⚠️</h4>**
   * Reference : https://github.com/AastaNV/JEP/
   ```sh
   wget https://raw.githubusercontent.com/AastaNV/JEP/master/script/install_opencv4.5.0_Jetson.sh
   ./install_opencv4.5.0_Jetson.sh
   ```
-  * Test the OpenCV
-  ```python
-  import cv2
-  print(cv2.getBuildInformation())
-  ```
-  * Check for GSTREAMER support in VIDEO I/O section
-  ```sh
-  GStreamer:                   YES (1.14.5)tree/master/script
-  ```
+  
 ## Algorithms used in Projects
 
 * The K-Nearest Neighbor (K-NN) algorithm is the simplest machine learning algorithm, classification algorithm. Data with similar characteristics are used under the assumption that they tend to fall into similar categories.
 
 <img src="https://user-images.githubusercontent.com/65393001/206213536-d27ebc5b-1793-47ec-bcf3-77628bacdedb.png" width="600" height="380"/>
-
-
+<img src="https://user-images.githubusercontent.com/8403172/206323986-3188f01e-8164-4789-be93-a116ad7094fc.png" width="600" height="250"/>
 
 ## Code Block Description
 
@@ -112,7 +133,7 @@ while cap.isOpened():
             print("can't open video")
             continue
 ```
-* ompute angles between joints, Get angle using arcos of dot product, then Translate certain numeric codes to the server in utf-8 and send them to Socat communication
+* Compute angles between joints, Get angle using arcos of dot product, then Translate certain numeric codes to the server in utf-8 and send them to Socat communication
 ```python
 //```Code for socket communication with server
  if results.multi_hand_landmarks is not None:
